@@ -16,3 +16,23 @@
 ##    ('9', ['A', 'B', 'E', 'C'])
 ##
 ##
+
+x = open('data.csv', 'r').readlines()
+x = [row[0:-1].split('\t') for row in x]
+d = set([i[1] for i in x])
+e = []
+
+for i in sorted(d):
+    e.append([i, []])
+
+tuples_list = []
+
+for j in e:
+    for k in x:
+        if (j[0] == k[1]):
+            #if (k[0] not in j[1]):
+            j[1].append(k[0])
+    tuples_list.append((j[0], j[1]))
+
+for l in tuples_list:
+    print(l)

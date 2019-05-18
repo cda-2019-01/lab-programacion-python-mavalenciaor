@@ -15,3 +15,20 @@
 ## jjj,18
 ##
 ##
+import sys
+
+x = open('data.csv', 'r').readlines()
+x = [row[0:-1].split('\t') for row in x]
+a = []
+c = []
+for i in x:
+    a.append(i[4].split(","))
+for j in a:
+    for k in j:
+        b = k.split(":")
+        c.append(b[0])
+uniquepatters = set(c)
+cant_registros = [(l, c.count(l)) for l in sorted(uniquepatters)]
+
+for i in cant_registros:
+    print("%s,%d" %(i[0], i[1]))
